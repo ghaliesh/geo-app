@@ -17,10 +17,8 @@ const useGetApiResult = (args: IArgs) => {
   const getData = useCallback(() => {
     args
       .dataGetterFunction(args.funcArgs)
-      .then((data) => {
-        setResult({ data, loading: false });
-      })
-      .catch((err) => setResult({ loading: false, error: err }));
+      .then((data) => setResult({ data, loading: false }))
+      .catch((error) => setResult({ error, loading: false }));
   }, [args]);
 
   useEffect((): void => {
