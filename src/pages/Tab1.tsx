@@ -1,8 +1,27 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import GeoCard from '../components/GeoCard';
-import './Tab1.css';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+
+import { getLocations } from "../api/location";
+import GeoCard from "../components/GeoCard";
+import useGetApiResult from "../hooks/useGetApiResult";
+import "./Tab1.css";
+
+const dataGetterFunction = getLocations;
 
 const Tab1: React.FC = () => {
+  const { result, loading, error } = useGetApiResult<IAPILocation[], never>({
+    dataGetterFunction,
+  });
+
+  if (error) return null;
+
+  if (loading) return <p>loading</p>;
+
   return (
     <IonPage>
       <IonHeader>
@@ -17,8 +36,10 @@ const Tab1: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <div className="flex column" style={{padding: "8px"}}>
-          {Array(20).fill(null).map(c => <GeoCard />)}
+        <div className="flex column" style={{ padding: "8px" }}>
+          {result?.data?.map((location) => {
+            return <GeoCard location={location} />;
+          })}
         </div>
       </IonContent>
     </IonPage>
