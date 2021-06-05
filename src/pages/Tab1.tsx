@@ -14,13 +14,9 @@ import "./Tab1.css";
 const dataGetterFunction = getLocations;
 
 const Tab1: React.FC = () => {
-  const { data, loading, error } = useGetApiResult({
+  const { result, loading, error } = useGetApiResult({
     dataGetterFunction,
   });
-
-  useEffect(() => {
-    console.log({ data, loading, error });
-  }, [data, error, loading]);
 
   return (
     <IonPage>

@@ -1,23 +1,25 @@
 import { useCallback, useEffect, useState } from "react";
 
-interface IState {
-  data?: any[];
+import { AxiosResponse } from "axios";
+
+interface IState<T> {
+  result?: AxiosResponse<T>;
   loading: boolean;
   error?: Error;
 }
 
-interface IArgs {
-  dataGetterFunction: (args?: any) => Promise<any>;
-  funcArgs?: any;
+interface IArgs<T, D> {
+  dataGetterFunction: (args?: D) => Promise<AxiosResponse<T>>;
+  funcArgs?: D;
 }
 
-const useGetApiResult = (args: IArgs) => {
-  const [result, setResult] = useState<IState>({ loading: true });
+const useGetApiResult = <T, D extends object>(args: IArgs<T, D>) => {
+  const [result, setResult] = useState<IState<T>>({ loading: true });
 
   const getData = useCallback(() => {
     args
       .dataGetterFunction(args.funcArgs)
-      .then((data) => setResult({ data, loading: false }))
+      .then((result) => setResult({ result, loading: false }))
       .catch((error) => setResult({ error, loading: false }));
   }, [args]);
 
