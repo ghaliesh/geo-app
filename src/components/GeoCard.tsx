@@ -1,6 +1,6 @@
 import { FC } from "react";
-
 import styled from "styled-components";
+import { formatDistanceToNow, formatDistanceToNowStrict } from "date-fns";
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,7 +52,10 @@ const GeoCard: React.FC<IGeoCard> = ({ location }): JSX.Element => {
     <Wrapper>
       <Row label="Address" value={address}></Row>
       <Row label="IP" value={location.ip}></Row>
-      <Row label="Date" value={location.date}></Row>
+      <Row
+        label="Date"
+        value={formatDistanceToNow(new Date(location.date))}
+      ></Row>
     </Wrapper>
   );
 };

@@ -5,7 +5,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useEffect } from "react";
+
 import { getLocations } from "../api/location";
 import GeoCard from "../components/GeoCard";
 import useGetApiResult from "../hooks/useGetApiResult";
