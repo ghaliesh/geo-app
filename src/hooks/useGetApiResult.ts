@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface IState {
   data?: any[];
@@ -14,13 +14,18 @@ interface IArgs {
 const useGetApiResult = (args: IArgs) => {
   const [result, setResult] = useState<IState>({ loading: true });
 
-  useEffect((): void => {
+  const getData = useCallback(() => {
     args
       .dataGetterFunction(args.funcArgs)
       .then((data) => {
         setResult({ data, loading: false });
       })
       .catch((err) => setResult({ loading: false, error: err }));
+  }, [args]);
+
+  useEffect((): void => {
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return result;

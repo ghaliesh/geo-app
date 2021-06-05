@@ -11,9 +11,11 @@ import GeoCard from "../components/GeoCard";
 import useGetApiResult from "../hooks/useGetApiResult";
 import "./Tab1.css";
 
+const dataGetterFunction = getLocations;
+
 const Tab1: React.FC = () => {
   const { data, loading, error } = useGetApiResult({
-    dataGetterFunction: getLocations,
+    dataGetterFunction,
   });
 
   useEffect(() => {
