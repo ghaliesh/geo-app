@@ -14,9 +14,13 @@ import "./Tab1.css";
 const dataGetterFunction = getLocations;
 
 const Tab1: React.FC = () => {
-  const { result, loading, error } = useGetApiResult({
+  const { result, loading, error } = useGetApiResult<IAPILocation[], never>({
     dataGetterFunction,
   });
+
+  if (error) return null;
+
+  if (loading) return <p>loading</p>;
 
   return (
     <IonPage>
@@ -33,11 +37,9 @@ const Tab1: React.FC = () => {
         </IonHeader>
 
         <div className="flex column" style={{ padding: "8px" }}>
-          {Array(20)
-            .fill(null)
-            .map((c) => (
-              <GeoCard />
-            ))}
+          {result?.data?.map((location) => {
+            return <GeoCard location={location} />;
+          })}
         </div>
       </IonContent>
     </IonPage>

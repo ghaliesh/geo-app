@@ -12,5 +12,3 @@ interface IAPILocation {
   country: string;
   __v: number;
 }
-
-interface IA
