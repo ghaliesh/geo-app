@@ -7,13 +7,16 @@ import {
 } from "@ionic/react";
 
 import { getLocations } from "../api/location";
+import SingleLocationModal from "../components/SingleLocation";
 import GeoCard from "../components/GeoCard";
 import useGetApiResult from "../hooks/useGetApiResult";
 import "./Tab1.css";
+import { useState } from "react";
 
 const dataGetterFunction = getLocations;
 
 const Tab1: React.FC = () => {
+  const [location, setLocation] = useState<IAPILocation | null>(null);
   const { result, loading, error } = useGetApiResult<IAPILocation[], never>({
     dataGetterFunction,
   });
@@ -35,10 +38,15 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">History</IonTitle>
           </IonToolbar>
         </IonHeader>
-
+        {location && <SingleLocationModal location={location} />}
         <div className="flex column" style={{ padding: "8px" }}>
           {result?.data?.map((location) => {
-            return <GeoCard location={location} />;
+            return (
+              <GeoCard
+                location={location}
+                onSelect={(): void => setLocation(location)}
+              />
+            );
           })}
         </div>
       </IonContent>

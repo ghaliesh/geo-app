@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { formatDistanceToNow, formatDistanceToNowStrict } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,9 +33,9 @@ interface IRow {
   label: string;
   value: string | JSX.Element;
 }
-const Row: FC<IRow> = ({ label, value }): JSX.Element => {
+export const Row: FC<IRow> = ({ label, value }): JSX.Element => {
   return (
-    <RowWrapper>
+    <RowWrapper className="single-row">
       <strong>{label}</strong>
       <small>{value}</small>
     </RowWrapper>
@@ -44,17 +44,18 @@ const Row: FC<IRow> = ({ label, value }): JSX.Element => {
 
 interface IGeoCard {
   location: IAPILocation;
+  onSelect: () => void;
 }
 
-const GeoCard: React.FC<IGeoCard> = ({ location }): JSX.Element => {
+const GeoCard: React.FC<IGeoCard> = ({ location, onSelect }): JSX.Element => {
   const address = `${location.country}, ${location.city}`;
   return (
-    <Wrapper>
+    <Wrapper onClick={onSelect}>
       <Row label="Address" value={address}></Row>
       <Row label="IP" value={location.ip}></Row>
       <Row
         label="Date"
-        value={formatDistanceToNow(new Date(location.date))}
+        value={formatDistanceToNow(new Date(location.date)) + " ago"}
       ></Row>
     </Wrapper>
   );
