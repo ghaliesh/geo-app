@@ -1201,6 +1201,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@capacitor/android@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.0.0.tgz#0d8ce965fa19d9f1412a468476525af2b92a151e"
+  integrity sha512-qyvI3LzfGvVnSK7Dw3dXXLSJjfj816EfWHiyGzV4Rg5r2XkvPa8IqjHT3lmyxwNJjGdHl3TTn9Q6YvM6XD70cQ==
+
 "@capacitor/app@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-1.0.0.tgz#38e092de0448f1b230cfc289d65337e802357638"
@@ -1239,6 +1244,11 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-1.0.0.tgz#8b3aa836a39352e77b54ed4bccbc901cdea2be5c"
   integrity sha512-IjGUpa7Q9RdHYnoqxKaklQRMJ5I2/IhYKIUOYN/6/H2bZ4cwJJCb/2NDsAw9L1R557mmt5A2bg8T+vUUFoEVUA==
+
+"@capacitor/ios@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.0.0.tgz#1fa8c7d23810d6e4a0a07b1504270c5484598213"
+  integrity sha512-EvWW86hQqmoY0qFV1LJyZujlgfEgl4iEUJVhCv84mshMyS2bXZu5Ip4yuKtJBDsKmTWyA7rfcAnPMEnUfQ6bkw==
 
 "@capacitor/keyboard@1.0.0":
   version "1.0.0"
